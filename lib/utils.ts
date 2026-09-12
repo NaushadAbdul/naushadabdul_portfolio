@@ -69,3 +69,13 @@ export function accentStyle(accent: string | null | undefined): AccentStyle {
 export function projectNumber(index: number) {
   return String(index + 1).padStart(2, "0");
 }
+
+/** Escapes HTML special characters to prevent XSS attacks. */
+export function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&")
+    .replace(/</g, "<")
+    .replace(/>/g, ">")
+    .replace(/"/g, "\"")
+    .replace(/'/g, "'");
+}

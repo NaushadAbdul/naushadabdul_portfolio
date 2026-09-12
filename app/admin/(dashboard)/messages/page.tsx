@@ -4,7 +4,7 @@ import { deleteMessage, setMessageRead } from "@/lib/admin/actions";
 import { formatDateTime, formatRelative } from "@/lib/admin/format";
 import { requireAdmin } from "@/lib/admin/guard";
 import { listMessages } from "@/lib/admin/queries";
-import { cn } from "@/lib/utils";
+import { cn, escapeHtml } from "@/lib/utils";
 
 export default async function MessagesPage() {
   const { supabase } = await requireAdmin();
@@ -100,7 +100,7 @@ export default async function MessagesPage() {
               </div>
 
               <div className="p-4">
-                <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.message}</p>
+                <p className="text-sm leading-relaxed whitespace-pre-wrap">{escapeHtml(message.message)}</p>
                 <p className="mt-4 font-mono text-[0.6rem] tracking-wide text-ink/45">
                   {formatDateTime(message.created_at)} · {formatRelative(message.created_at)}
                 </p>
