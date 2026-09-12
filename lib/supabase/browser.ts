@@ -2,7 +2,7 @@
 
 import { createBrowserClient } from "@supabase/ssr";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { isSupabaseConfigured, SUPABASE_KEY, SUPABASE_URL } from "./env";
+import { SUPABASE_KEY, SUPABASE_URL } from "./env";
 
 let cached: SupabaseClient | null = null;
 
@@ -13,9 +13,22 @@ let cached: SupabaseClient | null = null;
  * admins to write, so this client needs a valid session cookie.
  */
 export function getBrowserClient(): SupabaseClient | null {
-  if (!isSupabaseConfigured) return null;
+  const url = (
+    SUPABASE_URL ||
+    process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    ""
+  ).trim().replace(/^["']|["']$/g, "");
 
-  cached ??= createBrowserClient(SUPABASE_URL, SUPABASE_KEY);
+  const key = (
+    SUPABASE_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    ""
+  ).trim().replace(/^["']|["']$/g, "");
+
+  if (!url || !key) return null;
+
+  cached ??= createBrowserClient(url, key);
 
   return cached;
 }

@@ -57,7 +57,7 @@ function UploadField({ field, defaultValue }: UploadFieldProps) {
 
     try {
       const supabase = getBrowserClient();
-      if (!supabase) throw new Error("Supabase is not configured.");
+      if (!supabase) throw new Error("Supabase is not configured. Please refresh the page.");
 
       const extension = file.name.split(".").pop()?.toLowerCase() ?? "bin";
       const path = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}.${extension}`;
