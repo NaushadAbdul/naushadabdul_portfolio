@@ -26,15 +26,15 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const missingEnv = getMissingSupabaseEnv();
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-16">
-      <div className="pointer-events-none absolute inset-0 select-none" aria-hidden="true">
-        <Starburst className="absolute -top-16 -right-20 size-64 animate-spin-slow opacity-70 md:size-96" />
-        <ConcentricRings className="absolute -bottom-24 -left-24 size-72 opacity-60 md:size-96" />
+    <main className="relative flex min-h-screen w-full items-center justify-center overflow-x-hidden px-3.5 py-10 sm:px-6 sm:py-16 md:py-20">
+      <div className="pointer-events-none absolute inset-0 select-none overflow-hidden" aria-hidden="true">
+        <Starburst className="absolute -top-12 -right-16 size-44 sm:-top-16 sm:-right-20 sm:size-64 md:size-96 animate-spin-slow opacity-60 sm:opacity-70" />
+        <ConcentricRings className="absolute -bottom-16 -left-16 size-48 sm:-bottom-24 sm:-left-24 sm:size-72 md:size-96 opacity-50 sm:opacity-60" />
       </div>
 
-      <div className="relative w-full max-w-md">
+      <div className="relative z-10 w-full max-w-md mx-auto">
         {!isSupabaseConfigured ? (
-          <div className="brut-border-2 mb-5 bg-brut-orange px-4 py-3 font-mono text-[0.7rem] leading-relaxed font-bold">
+          <div className="brut-border-2 mb-4 sm:mb-5 bg-brut-orange px-3.5 py-2.5 sm:px-4 sm:py-3 font-mono text-[0.65rem] sm:text-[0.7rem] leading-relaxed font-bold">
             <p>Supabase is not configured — sign-in will not work until the environment variables are set.</p>
             {missingEnv.length > 0 && (
               <p className="mt-1 font-semibold text-ink/85">Missing: {missingEnv.join(", ")}</p>
@@ -44,10 +44,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
         <LoginForm nextPath={params.next ?? "/admin"} initialError={initialError} />
 
-        <p className="mt-6 text-center">
+        <p className="mt-5 sm:mt-6 text-center">
           <a
             href="/"
-            className="border-b-[3px] border-ink font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-brut-yellow"
+            className="inline-block border-b-[3px] border-ink font-mono text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em] transition-colors hover:bg-brut-yellow py-0.5"
           >
             ← Back to site
           </a>
