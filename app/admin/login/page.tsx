@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ConcentricRings, Starburst } from "@/components/hero-graphics";
 import { LoginForm } from "@/components/admin/login-form";
-import { isSupabaseConfigured } from "@/lib/supabase/env";
+import { getMissingSupabaseEnv, isSupabaseConfigured } from "@/lib/supabase/env";
 
 export const metadata: Metadata = {
   title: "Admin sign in",
@@ -23,6 +23,7 @@ type LoginPageProps = {
 export default async function LoginPage({ searchParams }: LoginPageProps) {
   const params = await searchParams;
   const initialError = params.error ? ERROR_MESSAGES[params.error] : undefined;
+  const missingEnv = getMissingSupabaseEnv();
 
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-16">
@@ -33,9 +34,12 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
       <div className="relative w-full max-w-md">
         {!isSupabaseConfigured ? (
-          <p className="brut-border-2 mb-5 bg-brut-orange px-4 py-3 font-mono text-[0.7rem] leading-relaxed font-bold">
-            Supabase is not configured — sign-in will not work until the environment variables are set.
-          </p>
+          <div className="brut-border-2 mb-5 bg-brut-orange px-4 py-3 font-mono text-[0.7rem] leading-relaxed font-bold">
+            <p>Supabase is not configured — sign-in will not work until the environment variables are set.</p>
+            {missingEnv.length > 0 && (
+              <p className="mt-1 font-semibold text-ink/85">Missing: {missingEnv.join(", ")}</p>
+            )}
+          </div>
         ) : null}
 
         <LoginForm nextPath={params.next ?? "/admin"} initialError={initialError} />
