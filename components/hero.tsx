@@ -84,14 +84,14 @@ export function Hero({ settings }: HeroProps) {
 
         {/* ---- portrait ---- */}
         <div className="relative mx-auto w-full max-w-[280px] xs:max-w-[320px] sm:max-w-sm md:max-w-md lg:max-w-none mt-4 lg:mt-0">
-          <div className="relative">
+          <div className="float-drift relative [--float-distance:-12px] [--float-duration:7s] [--float-delay:0.4s]">
             {/* Background offset card (visible on tablet/desktop) */}
             <div
-              className="float-drift brut-border absolute -top-3 -left-3 sm:-top-4 sm:-left-4 hidden h-full w-full bg-brut-blue sm:block [--float-delay:0.6s]"
+              className="brut-border absolute -top-3 -left-3 sm:-top-4 sm:-left-4 hidden h-full w-full bg-brut-blue sm:block"
               aria-hidden="true"
             />
             {/* Foreground image container */}
-            <div className="float-drift brut-border relative aspect-4/5 sm:aspect-5/6 overflow-hidden bg-brut-yellow shadow-brut sm:shadow-brut-lg">
+            <div className="brut-border relative aspect-4/5 sm:aspect-5/6 overflow-hidden bg-brut-yellow shadow-brut sm:shadow-brut-lg">
               <Portrait alt={`Portrait of ${settings.full_name}`} src={settings.portrait_url} className="object-cover object-top" />
             </div>
             {/* Focus sticker */}
@@ -99,7 +99,7 @@ export function Hero({ settings }: HeroProps) {
               accent="pink"
               rotate={6}
               float
-              className="absolute -right-2 -bottom-3 sm:-right-4 sm:-bottom-4 md:-right-6 text-[0.6rem] sm:text-xs"
+              className="absolute -right-2 -bottom-3 sm:-right-4 sm:-bottom-4 md:-right-6 text-[0.6rem] sm:text-xs z-10"
             >
               {settings.focus}
             </Sticker>
