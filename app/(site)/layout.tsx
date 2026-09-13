@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { CursorGrid } from "@/components/ui/cursor-grid";
 import { getSettings } from "@/lib/data";
 
 /** Rebuild at most every 5 minutes so admin edits appear without a deploy. */
@@ -51,6 +52,28 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       >
         Skip to content
       </a>
+
+      {/* Interactive background cursor grid */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 -z-10 h-full w-full overflow-hidden opacity-60"
+      >
+        <CursorGrid
+          cellSize={34}
+          color="#0a0a0a"
+          radius={140}
+          falloff="smooth"
+          holdTime={300}
+          fadeDuration={700}
+          lineWidth={1.2}
+          maxOpacity={0.6}
+          fillOpacity={0.06}
+          gridOpacity={0}
+          cellRadius={0}
+          clickPulse
+          pulseSpeed={650}
+        />
+      </div>
 
       <Navbar settings={settings} />
       <main className="flex-1">{children}</main>
