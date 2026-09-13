@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { ClickSpark } from "@/components/ui/click-spark";
 import { CursorGrid } from "@/components/ui/cursor-grid";
 import { getSettings } from "@/lib/data";
 
@@ -45,7 +46,14 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
   const settings = await getSettings();
 
   return (
-    <>
+    <ClickSpark
+      sparkColor="#ffd93d"
+      sparkSize={14}
+      sparkRadius={25}
+      sparkCount={10}
+      duration={400}
+      className="flex min-h-full flex-col"
+    >
       <a
         href="#top"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-100 focus:brut-border focus:bg-brut-lime focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:font-bold focus:uppercase"
@@ -53,32 +61,32 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
         Skip to content
       </a>
 
-      {/* Interactive background cursor grid */}
+      {/* Interactive cursor grid layer overlaying page with pointer-events-none */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 -z-10 h-full w-full overflow-hidden opacity-60"
+        className="pointer-events-none fixed inset-0 z-30 h-full w-full overflow-hidden mix-blend-multiply"
       >
         <CursorGrid
           cellSize={34}
           color="#0a0a0a"
-          radius={140}
+          radius={160}
           falloff="smooth"
-          holdTime={300}
-          fadeDuration={700}
-          lineWidth={1.2}
-          maxOpacity={0.6}
-          fillOpacity={0.06}
+          holdTime={350}
+          fadeDuration={650}
+          lineWidth={1.5}
+          maxOpacity={0.7}
+          fillOpacity={0.08}
           gridOpacity={0}
           cellRadius={0}
           clickPulse
-          pulseSpeed={650}
+          pulseSpeed={700}
         />
       </div>
 
       <Navbar settings={settings} />
-      <main className="flex-1">{children}</main>
+      <main className="relative z-10 flex-1">{children}</main>
       <Footer settings={settings} />
       <ScrollReveal />
-    </>
+    </ClickSpark>
   );
 }
