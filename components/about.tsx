@@ -42,7 +42,11 @@ export function About({ settings }: AboutProps) {
   ];
 
   return (
-    <section id="about" className="border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28">
+    <section
+      id="about"
+      data-reveal
+      className="reveal-soft border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28 [--float-distance:-6px] [--float-duration:10.5s]"
+    >
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading index="01" kicker="Who I am" title="About" accent="lime" />
 
@@ -61,10 +65,10 @@ export function About({ settings }: AboutProps) {
             </div>
 
             <div className="mt-9 flex flex-wrap gap-3">
-              <Sticker accent="lime" rotate={-2}>
+              <Sticker accent="lime" rotate={-2} float>
                 Ships, then iterates
               </Sticker>
-              <Sticker accent="blue" rotate={2}>
+              <Sticker accent="blue" rotate={2} float>
                 Documents everything
               </Sticker>
             </div>
@@ -75,7 +79,7 @@ export function About({ settings }: AboutProps) {
             {DISCIPLINES.map((discipline, index) => (
               <div
                 key={discipline.label}
-                className="brut-border flex items-stretch gap-0 bg-paper shadow-brut-sm transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+                className="float-drift brut-border flex items-stretch gap-0 bg-paper shadow-brut-sm transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
               >
                 <div
                   className={cn(
@@ -93,7 +97,7 @@ export function About({ settings }: AboutProps) {
               </div>
             ))}
 
-            <Card accentBar="orange" className="p-5">
+            <Card accentBar="orange" className="float-drift p-5">
               <h3 className="font-mono text-[0.7rem] font-bold uppercase tracking-[0.25em] text-ink/60">
                 Fact file
               </h3>

@@ -53,7 +53,11 @@ export function ContactForm() {
   const sending = status === "sending";
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="brut-border bg-paper p-5 shadow-brut md:p-7">
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className="float-drift brut-border bg-paper p-5 shadow-brut md:p-7"
+    >
       <div className="mb-6 flex items-center justify-between border-b-[3px] border-ink pb-3">
         <h3 className="font-mono text-xs font-bold uppercase tracking-[0.25em]">Send a message</h3>
         <span className="font-mono text-[0.6rem] font-bold uppercase tracking-widest text-ink/50">
@@ -125,7 +129,7 @@ export function ContactForm() {
       ) : null}
 
       <div className="mt-6 flex flex-wrap items-center gap-4">
-        <Button type="submit" disabled={sending} variant="accent" accent="lime" size="lg" className="min-w-45">
+        <Button type="submit" disabled={sending} variant="accent" accent="lime" size="lg" className="min-w-45" float>
           {sending ? "Sending…" : "Send Message"}
           {!sending && <span aria-hidden="true">→</span>}
         </Button>

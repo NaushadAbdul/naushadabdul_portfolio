@@ -17,9 +17,12 @@ export default async function ProjectsPage() {
   return (
     <>
       {/* ---- page header ---- */}
-      <section className="relative overflow-hidden border-b-[3px] border-ink px-4 py-16 sm:px-6 md:py-20">
+      <section
+        data-reveal
+        className="reveal-soft relative overflow-hidden border-b-[3px] border-ink px-4 py-16 sm:px-6 md:py-20 [--float-distance:-6px] [--float-duration:11.5s]"
+      >
         <span
-          className="pointer-events-none absolute -top-10 right-0 font-display text-[22vw] leading-none text-ink/[0.05] uppercase select-none"
+          className="float-drift pointer-events-none absolute -top-10 right-0 font-display text-[22vw] leading-none text-ink/[0.05] uppercase select-none"
           aria-hidden="true"
         >
           Work
@@ -28,7 +31,7 @@ export default async function ProjectsPage() {
         <div className="relative mx-auto w-full max-w-7xl">
           <a
             href="/"
-            className="inline-flex items-center gap-2 border-b-[3px] border-ink font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-brut-yellow"
+            className="float-drift inline-flex items-center gap-2 border-b-[3px] border-ink font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-brut-yellow"
           >
             ← Back home
           </a>
@@ -44,7 +47,7 @@ export default async function ProjectsPage() {
             <span className="brut-border bg-brut-lime px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-[0.2em] shadow-brut-xs">
               {String(projects.length).padStart(2, "0")} projects
             </span>
-            <Button href="/#contact" variant="outline">
+            <Button href="/#contact" variant="outline" float>
               Start a project
             </Button>
           </div>
@@ -52,7 +55,10 @@ export default async function ProjectsPage() {
       </section>
 
       {/* ---- grid ---- */}
-      <section className="px-4 py-16 sm:px-6 md:py-24">
+      <section
+        data-reveal
+        className="reveal-deep px-4 py-16 sm:px-6 md:py-24 [--float-distance:-7px] [--float-duration:12.5s]"
+      >
         <div className="mx-auto w-full max-w-7xl">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
@@ -60,14 +66,14 @@ export default async function ProjectsPage() {
             ))}
           </div>
 
-          <div className="brut-border mt-16 flex flex-wrap items-center justify-between gap-6 bg-brut-yellow p-6 shadow-brut md:p-8">
+          <div className="float-drift brut-border mt-16 flex flex-wrap items-center justify-between gap-6 bg-brut-yellow p-6 shadow-brut md:p-8">
             <div>
               <h2 className="text-3xl uppercase md:text-4xl">Got a project like these?</h2>
               <p className="mt-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-ink/60">
                 Tell me about it — I reply within a day
               </p>
             </div>
-            <Button href="/#contact" variant="solid" size="lg">
+            <Button href="/#contact" variant="solid" size="lg" float>
               Let&apos;s Build
               <span aria-hidden="true">→</span>
             </Button>

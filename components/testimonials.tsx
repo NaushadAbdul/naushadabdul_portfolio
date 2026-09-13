@@ -22,7 +22,11 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
   if (testimonials.length === 0) return null;
 
   return (
-    <section id="testimonials" className="border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28">
+    <section
+      id="testimonials"
+      data-reveal
+      className="reveal-quick border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28 [--float-distance:-6px] [--float-duration:11.5s]"
+    >
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading index="06" kicker="Kind words" title="Testimonials" accent="pink" />
 
@@ -36,7 +40,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
             return (
               <li
                 key={testimonial.id}
-                className="brut-border flex flex-col bg-paper shadow-brut transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none"
+                className="float-drift brut-border flex flex-col bg-paper shadow-brut transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none"
               >
                 <div className={cn("border-b-[3px] border-ink px-5 py-3", accent.bg)}>
                   <span

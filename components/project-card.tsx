@@ -34,7 +34,7 @@ function ProjectLinks({ project }: { project: Project }) {
           href={link.href}
           target="_blank"
           rel="noreferrer noopener"
-          className="border-b-[3px] border-ink font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-brut-yellow"
+          className="float-drift border-b-[3px] border-ink font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] transition-colors hover:bg-brut-yellow"
         >
           {link.label} ↗
         </a>
@@ -81,7 +81,7 @@ export function FeaturedProject({ project, index, flip = false }: FeaturedProjec
   const accent = accentStyle(project.accent);
 
   return (
-    <article className="brut-border grid bg-paper shadow-brut-lg transition-[transform,box-shadow] duration-150 ease-out hover:translate-x-2 hover:translate-y-2 hover:shadow-none lg:grid-cols-2">
+    <article className="float-drift brut-border grid bg-paper shadow-brut-lg transition-[transform,box-shadow] duration-150 ease-out hover:translate-x-2 hover:translate-y-2 hover:shadow-none lg:grid-cols-2">
       {/* poster panel */}
       <div
         className={cn(
@@ -135,7 +135,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   const accent = accentStyle(project.accent);
 
   return (
-    <article className="brut-border flex flex-col bg-paper shadow-brut transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none">
+    <article className="float-drift brut-border flex flex-col bg-paper shadow-brut transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none">
       <div
         className={cn(
           "grid-paper flex aspect-16/10 items-center justify-center border-b-[3px] border-ink p-5",

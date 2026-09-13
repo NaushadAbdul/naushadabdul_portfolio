@@ -182,6 +182,126 @@
     box-shadow 120ms ease;
 }
 
+/* ------------------------------------------------------------------
+   Idle float
+
+   A slow vertical drift that every panel, card and tile uses to feel
+   physically loose on the page. It animates `transform` on purpose:
+   Tailwind v4 emits the press/hover moves as the standalone `translate`
+   property, so the two compose instead of fighting each other.
+
+   Tune per element with `--float-distance`, `--float-duration` and
+   `--float-delay` (e.g. `[--float-distance:-6px]`). Setting the vars on
+   a section cascades one tempo to everything inside it, so each section
+   of the portfolio drifts at its own speed and amplitude.
+   ------------------------------------------------------------------ */
+.float-drift {
+  animation: float-drift var(--float-duration, 8s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+
+/* Offset neighbours so a grid never bobs in unison. */
+.float-drift:nth-child(2n) {
+  animation-delay: calc(var(--float-delay, 0s) + 0.8s);
+}
+.float-drift:nth-child(3n) {
+  animation-delay: calc(var(--float-delay, 0s) + 1.6s);
+}
+.float-drift:nth-child(5n) {
+  animation-delay: calc(var(--float-delay, 0s) + 2.4s);
+}
+
+@keyframes float-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, var(--float-distance, -10px), 0);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Section reveal
+
+   Scroll-driven entrance, in pure CSS: a section fades and lifts into
+   place as it enters the viewport, then hands over to the idle float
+   inside it. Browsers without scroll-driven animation support fall back
+   to the `.reveal-js` rules, which <ScrollReveal /> switches on with an
+   IntersectionObserver. If neither runs, the section is simply visible —
+   content is never hidden by default.
+
+   Each section picks a tempo with a `reveal-*` preset below; the vars it
+   sets drive both the native and the fallback path.
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    [data-reveal] {
+      animation-name: section-reveal;
+      animation-duration: auto;
+      animation-timing-function: var(--reveal-ease, ease-out);
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% entry var(--reveal-end, 55%);
+    }
+  }
+
+  /* IntersectionObserver fallback — the class is only present when the
+     browser has no scroll timeline to drive the animation above. */
+  .reveal-js [data-reveal] {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance, 28px));
+    transition:
+      opacity var(--reveal-duration, 700ms) var(--reveal-ease, ease-out),
+      transform var(--reveal-duration, 700ms) var(--reveal-ease, ease-out);
+  }
+  .reveal-js [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance, 28px));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Reveal tempos — how far a section lifts, how fast it arrives and how it
+   eases. One preset per section keeps adjacent entrances from matching. */
+@utility reveal-quick {
+  --reveal-distance: 18px;
+  --reveal-duration: 520ms;
+  --reveal-ease: ease-out;
+  --reveal-end: 42%;
+}
+
+@utility reveal-soft {
+  --reveal-distance: 26px;
+  --reveal-duration: 680ms;
+  --reveal-ease: ease-out;
+  --reveal-end: 52%;
+}
+
+@utility reveal-deep {
+  --reveal-distance: 40px;
+  --reveal-duration: 820ms;
+  --reveal-ease: ease-out;
+  --reveal-end: 64%;
+}
+
+@utility reveal-slow {
+  --reveal-distance: 30px;
+  --reveal-duration: 980ms;
+  --reveal-ease: ease-in-out;
+  --reveal-end: 72%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

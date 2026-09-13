@@ -43,7 +43,7 @@ export function Navbar({ settings }: NavbarProps) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b-[3px] border-ink bg-paper transition-shadow duration-200",
+        "sticky top-0 z-50 border-b-[3px] border-ink bg-paper transition-shadow duration-200 [--float-delay:0.2s] [--float-distance:-2px] [--float-duration:11s]",
         scrolled && "shadow-brut-sm",
       )}
     >
@@ -69,7 +69,7 @@ export function Navbar({ settings }: NavbarProps) {
           {navLinks.map((link, index) => {
             const accent = accentStyles[NAV_ACCENTS[index % NAV_ACCENTS.length]];
             return (
-              <li key={link.href}>
+              <li key={link.href} className="float-drift">
                 <a
                   href={link.href}
                   className="group relative block px-3 py-2 font-mono text-[0.7rem] font-bold uppercase tracking-[0.14em] transition-colors hover:bg-paper-dim lg:text-xs"
@@ -89,7 +89,7 @@ export function Navbar({ settings }: NavbarProps) {
         </ul>
 
         <div className="flex items-center gap-2">
-          <Button href="#contact" size="sm" variant="accent" accent="lime" className="hidden lg:inline-flex">
+          <Button href="#contact" size="sm" variant="accent" accent="lime" className="hidden lg:inline-flex" float>
             Let&apos;s Build
           </Button>
 
@@ -100,7 +100,7 @@ export function Navbar({ settings }: NavbarProps) {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className="brut-border flex size-11 items-center justify-center bg-brut-pink shadow-brut-xs press hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none md:hidden"
+            className="float-drift brut-border flex size-11 items-center justify-center bg-brut-pink shadow-brut-xs press hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none md:hidden"
           >
             <span className="relative block h-4 w-5" aria-hidden="true">
               {[0, 1, 2].map((line) => (
@@ -125,7 +125,7 @@ export function Navbar({ settings }: NavbarProps) {
           {navLinks.map((link, index) => {
             const accent = accentStyles[NAV_ACCENTS[index % NAV_ACCENTS.length]];
             return (
-              <li key={link.href}>
+              <li key={link.href} className="float-drift">
                 <a
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
@@ -146,6 +146,7 @@ export function Navbar({ settings }: NavbarProps) {
             size="lg"
             className="w-full"
             onClick={() => setMenuOpen(false)}
+            float
           >
             Let&apos;s Build
           </Button>

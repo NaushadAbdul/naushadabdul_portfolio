@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { getSettings } from "@/lib/data";
 
 /** Rebuild at most every 5 minutes so admin edits appear without a deploy. */
@@ -54,6 +55,7 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       <Navbar settings={settings} />
       <main className="flex-1">{children}</main>
       <Footer settings={settings} />
+      <ScrollReveal />
     </>
   );
 }

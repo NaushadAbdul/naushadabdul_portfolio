@@ -34,7 +34,11 @@ export function Skills({ skills }: SkillsProps) {
   const groups = groupByCategory(skills);
 
   return (
-    <section id="skills" className="border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28">
+    <section
+      id="skills"
+      data-reveal
+      className="reveal-slow border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28 [--float-distance:-7px] [--float-duration:13s]"
+    >
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading index="02" kicker="Toolkit" title="Skills" accent="yellow" />
 
@@ -43,7 +47,7 @@ export function Skills({ skills }: SkillsProps) {
             const accent = accentStyles[CATEGORY_ACCENTS[groupIndex % CATEGORY_ACCENTS.length]];
 
             return (
-              <div key={category} className="brut-border bg-paper shadow-brut">
+              <div key={category} className="float-drift brut-border bg-paper shadow-brut">
                 <div
                   className={cn(
                     "flex items-center justify-between border-b-[3px] border-ink px-4 py-3",

@@ -12,7 +12,11 @@ export function Experience({ experience }: ExperienceProps) {
   if (experience.length === 0) return null;
 
   return (
-    <section id="experience" className="border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28">
+    <section
+      id="experience"
+      data-reveal
+      className="reveal-deep border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28 [--float-distance:-5px] [--float-duration:11s]"
+    >
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading index="03" kicker="Where I've worked" title="Experience" accent="orange" />
 
@@ -26,7 +30,7 @@ export function Experience({ experience }: ExperienceProps) {
             return (
               <li
                 key={entry.id}
-                className="brut-border grid gap-5 bg-paper p-5 shadow-brut transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none md:grid-cols-[13rem_1fr] md:gap-8 md:p-7"
+                className="float-drift brut-border grid gap-5 bg-paper p-5 shadow-brut transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none md:grid-cols-[13rem_1fr] md:gap-8 md:p-7"
               >
                 {/* ---- period rail ---- */}
                 <div className="flex items-start gap-4 md:flex-col md:gap-4">

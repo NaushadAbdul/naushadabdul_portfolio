@@ -18,7 +18,8 @@ export function Socials({ settings }: SocialsProps) {
   return (
     <section
       aria-labelledby="socials-heading"
-      className="border-b-[3px] border-ink px-4 py-16 sm:px-6 md:py-20"
+      data-reveal
+      className="reveal-soft border-b-[3px] border-ink px-4 py-16 sm:px-6 md:py-20 [--float-distance:-7px] [--float-duration:12.5s]"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
@@ -35,7 +36,7 @@ export function Socials({ settings }: SocialsProps) {
             const accent = accentStyles[SOCIAL_ACCENTS[index % SOCIAL_ACCENTS.length]];
 
             return (
-              <li key={social.label}>
+              <li key={social.label} className="float-drift">
                 <a
                   href={social.href}
                   target="_blank"

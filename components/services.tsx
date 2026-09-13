@@ -9,7 +9,11 @@ type ServicesProps = {
 
 export function Services({ services }: ServicesProps) {
   return (
-    <section id="services" className="border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28">
+    <section
+      id="services"
+      data-reveal
+      className="reveal-soft border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28 [--float-distance:-7px] [--float-duration:12s]"
+    >
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading index="04" kicker="What I do" title="Services" accent="pink" />
 
@@ -20,7 +24,7 @@ export function Services({ services }: ServicesProps) {
             return (
               <article
                 key={service.id}
-                className="brut-border group flex flex-col bg-paper shadow-brut transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none"
+                className="float-drift brut-border group flex flex-col bg-paper shadow-brut transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none"
               >
                 <div className={cn("flex items-center justify-between border-b-[3px] border-ink p-4", accent.bg)}>
                   <span className={cn("font-display text-3xl leading-none", accent.on)}>{service.icon}</span>
@@ -54,7 +58,7 @@ export function Services({ services }: ServicesProps) {
         </div>
 
         <div className="mt-12 flex flex-wrap items-center gap-4">
-          <Button href="#contact" variant="solid" size="lg">
+          <Button href="#contact" variant="solid" size="lg" float>
             Have something else in mind?
           </Button>
           <span className="font-mono text-[0.7rem] font-bold uppercase tracking-[0.2em] text-ink/60">

@@ -23,6 +23,8 @@ type BaseProps = {
   name?: string;
   value?: string;
   "aria-label"?: string;
+  /** Gentle idle float, for CTA buttons on the public pages. */
+  float?: boolean;
 };
 
 const sizes: Record<Size, string> = {
@@ -59,10 +61,12 @@ export function Button({
   name,
   value,
   "aria-label": ariaLabel,
+  float = false,
 }: BaseProps) {
   const classes = cn(
     "brut-border inline-flex items-center justify-center gap-2 font-mono font-bold uppercase tracking-widest",
     "transition-[transform,box-shadow,background-color] duration-100 ease-out",
+    float && "float-drift",
     "shadow-brut hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none",
     "disabled:pointer-events-none disabled:opacity-50",
     sizes[size],

@@ -17,7 +17,10 @@ export function Footer({ settings }: FooterProps) {
     .filter(Boolean);
 
   return (
-    <footer className="grid-paper-dark border-t-[3px] border-ink bg-ink text-paper">
+    <footer
+      data-reveal
+      className="reveal-quick grid-paper-dark border-t-[3px] border-ink bg-ink text-paper [--float-distance:-5px] [--float-duration:12.5s]"
+    >
       {taglineItems.length > 0 ? (
         <Marquee items={taglineItems} accent="lime" reverse className="border-x-0" />
       ) : null}
@@ -38,13 +41,13 @@ export function Footer({ settings }: FooterProps) {
         </a>
 
         <div className="mt-12 grid gap-10 border-t-[3px] border-paper/25 pt-10 md:grid-cols-3">
-          <div>
+          <div className="float-drift">
             <h2 className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-paper/50">
               Say hello
             </h2>
             <a
               href={`mailto:${settings.email}`}
-              className="mt-3 inline-block border-b-[3px] border-paper/40 pb-0.5 text-sm break-all transition-colors hover:border-brut-lime hover:text-brut-lime"
+              className="float-drift mt-3 inline-block border-b-[3px] border-paper/40 pb-0.5 text-sm break-all transition-colors hover:border-brut-lime hover:text-brut-lime"
             >
               {settings.email}
             </a>
@@ -52,7 +55,7 @@ export function Footer({ settings }: FooterProps) {
               {settings.location}
             </p>
             {settings.resume_url ? (
-              <p className="mt-4">
+              <p className="float-drift mt-4">
                 <a
                   href={settings.resume_url}
                   target="_blank"
@@ -65,13 +68,13 @@ export function Footer({ settings }: FooterProps) {
             ) : null}
           </div>
 
-          <div>
+          <div className="float-drift">
             <h2 className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-paper/50">
               Navigate
             </h2>
             <ul className="mt-3 space-y-2">
               {[...navLinks, { label: "All projects", href: "/projects" }].map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="float-drift">
                   <a
                     href={link.href}
                     className="font-mono text-xs font-bold uppercase tracking-[0.2em] transition-colors hover:text-brut-lime"
@@ -83,14 +86,14 @@ export function Footer({ settings }: FooterProps) {
             </ul>
           </div>
 
-          <div>
+          <div className="float-drift">
             <h2 className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.25em] text-paper/50">
               Follow
             </h2>
             {socials.length > 0 ? (
               <ul className="mt-3 space-y-2">
                 {socials.map((social) => (
-                  <li key={social.label}>
+                  <li key={social.label} className="float-drift">
                     <a
                       href={social.href}
                       target="_blank"
@@ -117,7 +120,7 @@ export function Footer({ settings }: FooterProps) {
           </p>
           <a
             href="#top"
-            className="border-b-[3px] border-paper/40 font-mono text-[0.65rem] font-bold tracking-[0.25em] uppercase transition-colors hover:border-brut-lime hover:text-brut-lime"
+            className="float-drift border-b-[3px] border-paper/40 font-mono text-[0.65rem] font-bold tracking-[0.25em] uppercase transition-colors hover:border-brut-lime hover:text-brut-lime"
           >
             Back to top ↑
           </a>

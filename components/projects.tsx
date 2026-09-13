@@ -9,7 +9,11 @@ type ProjectsProps = {
 
 export function Projects({ projects }: ProjectsProps) {
   return (
-    <section id="projects" className="border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28">
+    <section
+      id="projects"
+      data-reveal
+      className="reveal-deep border-b-[3px] border-ink px-4 py-20 sm:px-6 md:py-28 [--float-distance:-8px] [--float-duration:12.5s]"
+    >
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading index="05" kicker="Selected work" title="Projects" accent="blue" />
 
@@ -20,7 +24,7 @@ export function Projects({ projects }: ProjectsProps) {
         </div>
 
         <div className="mt-14 flex flex-wrap items-center gap-5">
-          <Button href="/projects" variant="accent" accent="blue" size="lg">
+          <Button href="/projects" variant="accent" accent="blue" size="lg" float>
             View All Projects
             <span aria-hidden="true">→</span>
           </Button>

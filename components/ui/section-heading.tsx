@@ -21,7 +21,7 @@ export function SectionHeading({ index, kicker, title, accent = "yellow", classN
       <div className="flex items-center gap-4">
         <span
           className={cn(
-            "brut-border flex size-12 shrink-0 items-center justify-center font-mono text-sm font-bold shadow-brut-sm",
+            "float-drift brut-border flex size-12 shrink-0 items-center justify-center font-mono text-sm font-bold shadow-brut-sm",
             accentStyle(accent).bg,
             accentStyle(accent).on,
           )}

@@ -13,15 +13,19 @@ type HeroProps = {
 
 export function Hero({ settings }: HeroProps) {
   return (
-    <section id="top" className="relative overflow-hidden border-b-[3px] border-ink bg-paper">
+    <section
+      id="top"
+      data-reveal
+      className="reveal-quick relative overflow-hidden border-b-[3px] border-ink bg-paper [--float-distance:-7px] [--float-duration:12.5s]"
+    >
       {/* ---- background graphics: contained on desktop, hidden/subtle on mobile so they never collide with content ---- */}
       <div className="pointer-events-none absolute inset-0 select-none overflow-hidden" aria-hidden="true">
         <span className="absolute -top-4 -left-6 sm:-top-6 sm:-left-10 font-display text-[22vw] sm:text-[26vw] leading-none text-ink/[0.04] uppercase">
           {settings.initials}
         </span>
         <Starburst className="absolute -top-12 -right-16 size-48 md:size-80 animate-spin-slow opacity-60 md:opacity-90 hidden sm:block" />
-        <ConcentricRings className="absolute bottom-10 -left-12 size-44 md:size-72 opacity-50 md:opacity-70 hidden md:block" />
-        <Checkerboard className="absolute top-1/2 right-[46%] hidden size-28 -rotate-6 opacity-80 xl:block" />
+        <ConcentricRings className="float-drift absolute bottom-10 -left-12 size-44 md:size-72 opacity-50 md:opacity-70 hidden md:block" />
+        <Checkerboard className="float-drift absolute top-1/2 right-[46%] hidden size-28 -rotate-6 opacity-80 xl:block" />
       </div>
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-8 sm:gap-12 px-4 pt-8 pb-12 sm:px-6 sm:pt-14 sm:pb-16 md:pt-20 md:pb-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
@@ -56,11 +60,11 @@ export function Hero({ settings }: HeroProps) {
           </p>
 
           <div className="mt-6 sm:mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
-            <Button href="#contact" variant="accent" accent="pink" size="md" className="py-2.5 sm:py-3.5 px-5 sm:px-8 text-xs sm:text-base md:text-lg">
+            <Button href="#contact" variant="accent" accent="pink" size="md" className="py-2.5 sm:py-3.5 px-5 sm:px-8 text-xs sm:text-base md:text-lg" float>
               Let&apos;s Build
               <span aria-hidden="true">→</span>
             </Button>
-            <Button href="#projects" variant="outline" size="md" className="py-2.5 sm:py-3.5 px-5 sm:px-8 text-xs sm:text-base md:text-lg">
+            <Button href="#projects" variant="outline" size="md" className="py-2.5 sm:py-3.5 px-5 sm:px-8 text-xs sm:text-base md:text-lg" float>
               View Work
             </Button>
             {settings.resume_url ? (
@@ -68,14 +72,14 @@ export function Hero({ settings }: HeroProps) {
                 href={settings.resume_url}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-block border-b-[3px] border-ink font-mono text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em] transition-colors hover:bg-brut-lime py-1"
+                className="float-drift inline-block border-b-[3px] border-ink font-mono text-[0.65rem] sm:text-xs font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em] transition-colors hover:bg-brut-lime py-1"
               >
                 Résumé ↓
               </a>
             ) : null}
           </div>
 
-          <ZigZag className="mt-8 sm:mt-12 max-w-xs opacity-40 hidden sm:block" />
+          <ZigZag className="float-drift mt-8 sm:mt-12 max-w-xs opacity-40 hidden sm:block" />
         </div>
 
         {/* ---- portrait ---- */}
@@ -83,11 +87,11 @@ export function Hero({ settings }: HeroProps) {
           <div className="relative">
             {/* Background offset card (visible on tablet/desktop) */}
             <div
-              className="brut-border absolute -top-3 -left-3 sm:-top-4 sm:-left-4 hidden h-full w-full bg-brut-blue sm:block"
+              className="float-drift brut-border absolute -top-3 -left-3 sm:-top-4 sm:-left-4 hidden h-full w-full bg-brut-blue sm:block [--float-delay:0.6s]"
               aria-hidden="true"
             />
             {/* Foreground image container */}
-            <div className="brut-border relative aspect-4/5 sm:aspect-5/6 overflow-hidden bg-brut-yellow shadow-brut sm:shadow-brut-lg">
+            <div className="float-drift brut-border relative aspect-4/5 sm:aspect-5/6 overflow-hidden bg-brut-yellow shadow-brut sm:shadow-brut-lg">
               <Portrait alt={`Portrait of ${settings.full_name}`} src={settings.portrait_url} className="object-cover object-top" />
             </div>
             {/* Focus sticker */}
