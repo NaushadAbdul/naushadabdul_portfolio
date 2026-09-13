@@ -98,9 +98,17 @@ export function Footer({ settings }: FooterProps) {
                       href={social.href}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="font-mono text-xs font-bold uppercase tracking-[0.2em] transition-colors hover:text-brut-lime"
+                      className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.2em] transition-colors hover:text-brut-lime"
                     >
-                      {social.label} ↗
+                      {social.icon ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={social.icon}
+                          alt=""
+                          className="size-3.5 invert"
+                        />
+                      ) : null}
+                      <span>{social.label} ↗</span>
                     </a>
                   </li>
                 ))}

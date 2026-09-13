@@ -19,18 +19,19 @@ function handleFor(url: string, label: string) {
  * rendering a dead one.
  */
 export function socialsFromSettings(settings: SiteSettings): SocialLink[] {
-  const entries: Array<{ label: string; url: string | null }> = [
-    { label: "LinkedIn", url: settings.linkedin_url },
-    { label: "GitHub", url: settings.github_url },
-    { label: "X", url: settings.x_url },
-    { label: "Instagram", url: settings.instagram_url },
+  const entries: Array<{ label: string; url: string | null; icon: string }> = [
+    { label: "LinkedIn", url: settings.linkedin_url, icon: "/icons/linkedin.png" },
+    { label: "GitHub", url: settings.github_url, icon: "/icons/github.png" },
+    { label: "X", url: settings.x_url, icon: "/icons/twitter.png" },
+    { label: "Instagram", url: settings.instagram_url, icon: "/icons/instagram.png" },
   ];
 
   return entries
-    .filter((entry): entry is { label: string; url: string } => Boolean(entry.url))
+    .filter((entry): entry is { label: string; url: string; icon: string } => Boolean(entry.url))
     .map((entry) => ({
       label: entry.label,
       href: entry.url,
       handle: handleFor(entry.url, entry.label),
+      icon: entry.icon,
     }));
 }

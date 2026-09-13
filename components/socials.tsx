@@ -43,25 +43,36 @@ export function Socials({ settings }: SocialsProps) {
                   rel="noreferrer noopener"
                   className="brut-border group flex h-full flex-col justify-between bg-paper p-5 shadow-brut transition-[transform,box-shadow] duration-100 ease-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-none"
                 >
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      "block size-5 border-2 border-ink transition-transform duration-150 group-hover:rotate-45",
-                      accent.bg,
-                    )}
-                  />
-                  <span className="mt-8 flex items-center justify-between gap-3">
-                    <span className="font-display text-2xl uppercase">{social.label}</span>
+                  <div className="flex items-center justify-between">
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "flex size-10 items-center justify-center border-2 border-ink p-1.5 shadow-brut-xs transition-transform duration-150 group-hover:rotate-6",
+                        accent.bg,
+                      )}
+                    >
+                      {social.icon ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={social.icon}
+                          alt=""
+                          className="size-full object-contain"
+                        />
+                      ) : null}
+                    </span>
                     <span
                       aria-hidden="true"
                       className="text-xl transition-transform duration-150 group-hover:translate-x-1"
                     >
                       ↗
                     </span>
-                  </span>
-                  <span className="mt-1 truncate font-mono text-[0.65rem] tracking-wider text-ink/55">
-                    {social.handle}
-                  </span>
+                  </div>
+                  <div className="mt-8">
+                    <span className="font-display text-2xl uppercase">{social.label}</span>
+                    <span className="mt-1 block truncate font-mono text-[0.65rem] tracking-wider text-ink/55">
+                      {social.handle}
+                    </span>
+                  </div>
                 </a>
               </li>
             );
